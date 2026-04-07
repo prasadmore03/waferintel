@@ -1,0 +1,14 @@
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+streamlit
+joblib
+pillow
+opencv-python-headless
+transformers
+torch
+sentence-transformers
+faiss-cpu
