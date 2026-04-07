@@ -1,0 +1,21 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install only system dependencies needed
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements_rag.txt .
+
+# Install Python packages with optimization flags
+RUN pip install --no-cache-dir \
+    --no-binary :all: \
+    -r requirements_rag.txt
+
+COPY . .
+
+EXPOSE 8502
+
+CMD ["python", "run_rag_app.py"]
